@@ -1,46 +1,52 @@
 # cardoso-tech-site
 
-Site institucional da **Cardoso Tech Solutions LTDA** (CNPJ 62.015.820/0001-04).
+Site institucional da **Cardoso Tech Solutions LTDA** (CNPJ 62.015.820/0001-04), publicado em <https://cardosotech.dev.br>.
 
-Site estático (HTML + CSS + JS puro), sem build, com seletor de idioma PT/EN.
+Site estático (HTML + CSS + JS puro), sem build, com seletor de idioma PT/EN. Hospedado como Cloudflare Worker (static assets).
 
 ## Estrutura
 
 ```
-index.html            Página principal
-privacidade.html      Política de Privacidade (LGPD)
-assets/css/style.css  Estilos
-assets/js/i18n.js     Traduções PT/EN + animações
-assets/img/logo.svg   Logo / favicon
+wrangler.jsonc               Configuração do Worker (publica só a pasta public/)
+public/index.html            Página principal
+public/privacidade.html      Política de Privacidade (LGPD)
+public/robots.txt, sitemap.xml
+public/assets/css/style.css  Estilos
+public/assets/js/i18n.js     Traduções PT/EN + animações
+public/assets/js/carousel.js Carrossel de produtos
+public/assets/img/logo.svg   Logo / favicon
 ```
 
-Para editar textos, altere **os dois idiomas** em `assets/js/i18n.js` (o HTML só tem o texto padrão em PT).
+Para editar textos, altere **os dois idiomas** em `public/assets/js/i18n.js` (o HTML só tem o texto padrão em PT).
 
 ## Rodar localmente
 
 ```bash
-python -m http.server 8000
+npx http-server public -p 8000
 # abrir http://localhost:8000
 ```
 
-## Deploy no Cloudflare Pages
+## Deploy
 
-1. Suba este repositório para o GitHub.
-2. Em <https://dash.cloudflare.com> → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**.
-3. Selecione o repositório e configure:
-   - Framework preset: **None**
-   - Build command: *(vazio)*
-   - Build output directory: `/`
-4. **Save and Deploy**. O site fica em `https://<nome-do-projeto>.pages.dev`.
+**Automático (a cada push na `main`):** Cloudflare → Workers & Pages → `cardoso-tech-site` → **Settings → Build** → conectar o repositório GitHub com:
+- Branch: `main`
+- Build command: *(vazio)*
+- Deploy command: `npx wrangler deploy`
+- Root directory: `/`
 
-Cada `git push` na `main` publica automaticamente.
+**Manual (do computador):**
+
+```bash
+npx wrangler login    # só na primeira vez
+npx wrangler deploy
+```
 
 ## Domínio: cardosotech.dev.br
 
 1. Registrar `cardosotech.dev.br` em <https://registro.br> usando o CNPJ.
 2. Cloudflare → **Add a domain** → `cardosotech.dev.br` → plano **Free**. Anotar os 2 nameservers que o Cloudflare mostrar.
 3. Registro.br → domínio → **DNS** → **Alterar servidores DNS** → colar os nameservers do Cloudflare.
-4. Projeto do Pages → **Custom domains** → adicionar `cardosotech.dev.br` (e `www.cardosotech.dev.br`).
+4. Worker `cardoso-tech-site` → **Settings → Domains & Routes** → **Custom domain** → adicionar `cardosotech.dev.br` (e `www.cardosotech.dev.br`).
 
 ## E-mail: contato@cardosotech.dev.br
 
