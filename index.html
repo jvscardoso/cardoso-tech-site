@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardoso Tech Solutions | Software sob medida</title>
+  <meta name="description" content="Cardoso Tech Solutions LTDA — desenvolvimento de software sob medida, aplicações web e produtos SaaS.">
+  <meta name="theme-color" content="#0B0D17">
+  <meta property="og:title" content="Cardoso Tech Solutions">
+  <meta property="og:description" content="Desenvolvimento de software sob medida, aplicações web e produtos SaaS.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cardosotech.dev.br/">
+  <link rel="canonical" href="https://cardosotech.dev.br/">
+  <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand" aria-label="Cardoso Tech Solutions">
+        <img src="assets/img/logo.svg" alt="" width="34" height="34">
+        <span>Cardoso<b>Tech</b></span>
+      </a>
+      <nav class="nav-links">
+        <a href="#servicos" data-i18n="nav.services">Serviços</a>
+        <a href="#produtos" data-i18n="nav.products">Produtos</a>
+        <a href="#processo" data-i18n="nav.process">Processo</a>
+        <a href="#contato" data-i18n="nav.contact">Contato</a>
+      </nav>
+      <div class="lang-switch" role="group" aria-label="Idioma / Language">
+        <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero container">
+      <div class="hero-text">
+        <span class="badge"><span class="dot"></span><span data-i18n="hero.badge">Software sob medida · Cloud-native</span></span>
+        <h1 data-i18n-html="hero.title">Transformamos ideias em <span class="grad">software que escala.</span></h1>
+        <p class="lead" data-i18n="hero.lead">A Cardoso Tech Solutions projeta, desenvolve e opera aplicações web e produtos SaaS para negócios que querem crescer com tecnologia confiável.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contato" data-i18n="hero.cta1">Fale com a gente</a>
+          <a class="btn btn-ghost" href="#produtos" data-i18n="hero.cta2">Conheça nossos produtos</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="code-card">
+          <div class="code-top"><i></i><i></i><i></i><span>deploy.ts</span></div>
+<pre><code><span class="k">const</span> project = <span class="k">await</span> cardoso.<span class="f">build</span>({
+  idea:    <span class="s" data-i18n="hero.code">"seu negócio"</span>,
+  stack:   [<span class="s">"web"</span>, <span class="s">"api"</span>, <span class="s">"cloud"</span>],
+  quality: <span class="s">"production-ready"</span>,
+});
+
+<span class="k">await</span> project.<span class="f">launch</span>(); <span class="c">// 🚀</span></code></pre>
+        </div>
+        <div class="float-chip chip-a"><span class="ok">●</span> <span data-i18n="hero.chip1">Deploy concluído</span></div>
+        <div class="float-chip chip-b mono">git push → prod</div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="servicos" class="section container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="services.eyebrow">O que fazemos</span>
+        <h2 data-i18n="services.title">Do conceito ao produto em produção</h2>
+        <p data-i18n="services.lead">Atuamos de ponta a ponta: entendemos o problema, desenhamos a solução e entregamos software pronto para uso real.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M8 6 2 12l6 6M16 6l6 6-6 6M14 4l-4 16"/></svg></div>
+          <h3 data-i18n="services.s1.t">Software sob medida</h3>
+          <p data-i18n="services.s1.d">Sistemas desenvolvidos para o fluxo exato do seu negócio, sem adaptações forçadas.</p>
+        </article>
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <h3 data-i18n="services.s2.t">Aplicações web</h3>
+          <p data-i18n="services.s2.d">Sites, landing pages e plataformas web rápidas, responsivas e otimizadas para conversão.</p>
+        </article>
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/><circle cx="19" cy="17" r="2"/></svg></div>
+          <h3 data-i18n="services.s3.t">Produtos SaaS</h3>
+          <p data-i18n="services.s3.d">Criamos e operamos nossos próprios produtos por assinatura, multi-tenant e seguros.</p>
+        </article>
+        <article class="card">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M7 18a5 5 0 1 1 1-9.9A6 6 0 0 1 19.5 10 4 4 0 0 1 18 18Z"/></svg></div>
+          <h3 data-i18n="services.s4.t">Cloud & DevOps</h3>
+          <p data-i18n="services.s4.d">Arquitetura em nuvem, CI/CD e monitoramento para aplicações estáveis e escaláveis.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section id="produtos" class="section container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="products.eyebrow">Produtos & projetos</span>
+        <h2 data-i18n="products.title">O que estamos construindo</h2>
+      </div>
+      <div class="products">
+        <article class="product featured">
+          <span class="tag tag-soon" data-i18n="products.p1.tag">Em desenvolvimento</span>
+          <h3 data-i18n="products.p1.t">SaaS de gestão de clínicas</h3>
+          <p data-i18n="products.p1.d">Plataforma completa para clínicas e consultórios organizarem agenda, pacientes e finanças em um só lugar, acessível de qualquer dispositivo.</p>
+          <ul class="features">
+            <li data-i18n="products.p1.f1">Agenda online e confirmação automática</li>
+            <li data-i18n="products.p1.f2">Prontuário eletrônico do paciente</li>
+            <li data-i18n="products.p1.f3">Controle financeiro e relatórios</li>
+            <li data-i18n="products.p1.f4">Multiusuário com controle de acesso</li>
+          </ul>
+        </article>
+        <article class="product">
+          <span class="tag tag-live" data-i18n="products.p2.tag">Entregue</span>
+          <h3 data-i18n="products.p2.t">Landing pages & sites institucionais</h3>
+          <p data-i18n="products.p2.d">Páginas modernas e de alta performance para profissionais e pequenos negócios apresentarem seus serviços e captarem clientes.</p>
+          <ul class="features">
+            <li data-i18n="products.p2.f1">Design responsivo</li>
+            <li data-i18n="products.p2.f2">SEO e carregamento rápido</li>
+            <li data-i18n="products.p2.f3">Integração com WhatsApp</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="processo" class="section container">
+      <div class="section-head">
+        <span class="eyebrow" data-i18n="process.eyebrow">Como trabalhamos</span>
+        <h2 data-i18n="process.title">Um processo simples e transparente</h2>
+      </div>
+      <ol class="steps">
+        <li><span class="num">01</span><h3 data-i18n="process.s1.t">Descoberta</h3><p data-i18n="process.s1.d">Entendemos o seu negócio, objetivos e usuários.</p></li>
+        <li><span class="num">02</span><h3 data-i18n="process.s2.t">Design</h3><p data-i18n="process.s2.d">Prototipamos a solução e validamos antes de codar.</p></li>
+        <li><span class="num">03</span><h3 data-i18n="process.s3.t">Desenvolvimento</h3><p data-i18n="process.s3.d">Entregas incrementais com qualidade e testes.</p></li>
+        <li><span class="num">04</span><h3 data-i18n="process.s4.t">Lançamento & suporte</h3><p data-i18n="process.s4.d">Publicamos na nuvem e acompanhamos a evolução.</p></li>
+      </ol>
+    </section>
+
+    <!-- Contact -->
+    <section id="contato" class="section container">
+      <div class="contact">
+        <div>
+          <h2 data-i18n="contact.title">Vamos tirar seu projeto do papel?</h2>
+          <p data-i18n="contact.lead">Conte sua ideia. Respondemos rapidamente com os próximos passos.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="https://wa.me/5575991033018" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" class="btn-ico"><path d="M20.5 3.5A11 11 0 0 0 3.3 17.1L2 22l5-1.3A11 11 0 0 0 20.5 3.5ZM12 20a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.6 4.6 0 0 0 1 2.5 10.6 10.6 0 0 0 4 3.6c1.5.6 2.1.7 2.8.6a2.4 2.4 0 0 0 1.6-1.1 2 2 0 0 0 .1-1.1c0-.2-.2-.2-.4-.3Z" fill="currentColor" stroke="none"/></svg>
+            WhatsApp (75) 99103-3018
+          </a>
+          <a class="btn btn-ghost" href="mailto:contato@cardosotech.dev.br">contato@cardosotech.dev.br</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="brand small">
+        <img src="assets/img/logo.svg" alt="" width="26" height="26">
+        <span>Cardoso<b>Tech</b></span>
+      </div>
+      <div class="legal">
+        <p><strong>Cardoso Tech Solutions LTDA</strong> · CNPJ 62.015.820/0001-04</p>
+        <p>© <span id="year">2026</span> · <span data-i18n="footer.rights">Todos os direitos reservados.</span> · <a href="privacidade.html" data-i18n="footer.privacy">Política de Privacidade</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/i18n.js"></script>
+</body>
+</html>
