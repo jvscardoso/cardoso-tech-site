@@ -145,26 +145,67 @@ h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); line-height: 1.15; letter-spacing:
   border: 1px solid rgba(124, 92, 255, .3);
 }
 .icon svg { width: 22px; height: 22px; fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.card h3, .product h3, .steps h3 { font-size: 1.08rem; font-weight: 700; letter-spacing: -.01em; margin-bottom: 8px; }
-.card p, .product p, .steps p { color: var(--muted); font-size: .94rem; }
+.card h3, .steps h3 { font-size: 1.08rem; font-weight: 700; letter-spacing: -.01em; margin-bottom: 8px; }
+.card p, .steps p { color: var(--muted); font-size: .94rem; }
 
 /* Products */
-.products { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-.product {
-  position: relative; padding: 34px 30px; border-radius: var(--radius);
-  background: var(--card); border: 1px solid var(--border); overflow: hidden;
+.carousel { position: relative; }
+.car-track {
+  position: relative; display: flex; gap: 18px;
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  scrollbar-width: none; border-radius: 24px; outline: none;
 }
-.product.featured {
+.car-track::-webkit-scrollbar { display: none; }
+.car-track:focus-visible { box-shadow: 0 0 0 2px var(--cyan); }
+.slide {
+  flex: 0 0 100%; scroll-snap-align: start;
+  display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center;
+  padding: 48px; border-radius: 24px; border: 1px solid rgba(124, 92, 255, .3);
   background:
-    radial-gradient(600px 240px at 100% 0%, rgba(124, 92, 255, .22), transparent 60%),
-    radial-gradient(400px 200px at 0% 100%, rgba(34, 211, 238, .12), transparent 60%),
-    var(--card);
-  border-color: rgba(124, 92, 255, .35);
+    radial-gradient(700px 300px at 100% 0%, rgba(124, 92, 255, .22), transparent 60%),
+    radial-gradient(500px 260px at 0% 100%, rgba(34, 211, 238, .12), transparent 60%),
+    var(--bg-2);
 }
-.product h3 { font-size: 1.4rem; margin-top: 18px; }
+.slide-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.slide h3 { font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; letter-spacing: -.025em; font-weight: 800; margin: 18px 0 14px; }
+.slide p { color: var(--muted); font-size: 1rem; }
+.slide .ideal { margin-top: 18px; font-size: .94rem; }
+.slide .ideal strong { color: var(--text); font-weight: 600; }
+.slide-side {
+  padding: 28px; border-radius: var(--radius);
+  background: rgba(255, 255, 255, .03); border: 1px solid var(--border);
+}
+.slide-side .features { margin-top: 0; }
+.slide-icon {
+  width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; margin-bottom: 22px;
+  background: var(--grad); box-shadow: 0 12px 30px -10px rgba(124, 92, 255, .8);
+}
+.slide-icon svg { width: 28px; height: 28px; fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+.car-controls { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 24px; }
+.car-btn {
+  width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; cursor: pointer;
+  background: var(--card); border: 1px solid var(--border); color: var(--text); transition: background .2s, border-color .2s;
+}
+.car-btn:hover { background: var(--card-hover); border-color: rgba(124, 92, 255, .45); }
+.car-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.car-dots { display: flex; gap: 8px; }
+.car-dot {
+  position: relative; width: 10px; height: 10px; padding: 0; border: 0; border-radius: 999px; cursor: pointer;
+  background: rgba(255, 255, 255, .18); overflow: hidden; transition: width .35s ease;
+}
+.car-dot[aria-selected="true"] { width: 38px; }
+.car-dot[aria-selected="true"]::after {
+  content: ""; position: absolute; inset: 0; background: var(--grad); transform-origin: left;
+  animation: car-progress var(--car-interval, 6s) linear forwards;
+}
+.carousel.paused .car-dot[aria-selected="true"]::after { animation-play-state: paused; }
+.carousel.static .car-dot[aria-selected="true"]::after { animation: none; }
+@keyframes car-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 .tag { display: inline-block; padding: 4px 11px; border-radius: 999px; font-size: .74rem; font-weight: 600; letter-spacing: .02em; }
 .tag-soon { background: rgba(124, 92, 255, .16); color: #B9A8FF; border: 1px solid rgba(124, 92, 255, .4); }
 .tag-live { background: rgba(52, 211, 153, .12); color: var(--green); border: 1px solid rgba(52, 211, 153, .35); }
+.tag-wl { background: rgba(34, 211, 238, .1); color: var(--cyan); border: 1px solid rgba(34, 211, 238, .35); }
 .features { list-style: none; margin-top: 22px; display: grid; gap: 10px; }
 .features li { position: relative; padding-left: 28px; font-size: .94rem; }
 .features li::before {
@@ -220,13 +261,15 @@ h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); line-height: 1.15; letter-spacing:
   .hero { grid-template-columns: 1fr; padding-top: 64px; }
   .hero-visual { max-width: 520px; }
   .cards, .steps { grid-template-columns: repeat(2, 1fr); }
-  .products { grid-template-columns: 1fr; }
+  .slide { grid-template-columns: 1fr; gap: 28px; padding: 36px; }
 }
 @media (max-width: 720px) {
   .nav-links { display: none; }
   .lang-switch { margin-left: auto; }
   .cards, .steps { grid-template-columns: 1fr; }
   .contact { padding: 34px 24px; }
+  .slide { padding: 26px 22px; }
+  .slide-side { padding: 22px; }
   .legal { text-align: left; }
   .chip-a { left: 8px; } .chip-b { right: 8px; }
   .code-card { transform: none; }
